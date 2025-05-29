@@ -1,9 +1,18 @@
 #include "inputs.hpp"
 
+float fovGlob = 80.;
+
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
+    fovGlob -= (float)yoffset * 5;
+    fovGlob = glm::clamp(fovGlob, 1.0f, 90.0f);
+}
+
 
 InputController::InputController(GLFWwindow* window, Camera* camera) {
     _window = window;
     _camera = camera;
+
+    glfwSetScrollCallback(window, scroll_callback); 
 }
 
 
@@ -55,12 +64,7 @@ void InputController::moveCameraView(float deltaTime) {
     _camera->rotate(static_cast<float>(xoffset), static_cast<float>(yoffset));
 
 
-    if (glfwGetKey(_window, GLFW_KEY_KP_ADD) == GLFW_PRESS) {
-        _camera->zoom(30*deltaTime);
-    }
-    if (glfwGetKey(_window, GLFW_KEY_KP_SUBTRACT) == GLFW_PRESS) {
-        _camera->zoom(- 30*deltaTime);
-    }
+    _camera->zoom(fovGlob);
 }
 
 

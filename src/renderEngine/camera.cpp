@@ -31,9 +31,8 @@ void Camera::rotate(float yawOffset, float pitchOffset) {
     updateVectors();
 }
 
-void Camera::zoom(float offset) {
-    _fov -= offset;
-    _fov = glm::clamp(_fov, 1.0f, 90.0f);
+void Camera::zoom(float fov) {
+    _fov = fov;
 }
 
 void Camera::updateVectors() {
