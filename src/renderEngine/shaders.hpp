@@ -1,3 +1,5 @@
+// This file is not mine its from https://www.opengl-tutorial.org/fr/beginners-tutorials/tutorial-2-the-first-triangle/
+
 #pragma once 
 
 #include "include.hpp"
