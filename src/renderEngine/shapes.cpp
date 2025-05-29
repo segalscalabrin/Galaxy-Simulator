@@ -1,4 +1,4 @@
-#include "shapeRendering.hpp"
+#include "shapes.hpp"
 
 // -----------------------------------------------------
 // -----------------------------------------------------
@@ -6,13 +6,13 @@
 // -----------------------------------------------------
 // -----------------------------------------------------
 
-SphereRendering::SphereRendering() {
+Sphere::Sphere() {
     createBaseIcosphere();
     uploadToOpenGL();
 }
 
 
-void SphereRendering::createBaseIcosphere() {
+void Sphere::createBaseIcosphere() {
     const float X=.525731112119133606f;
     const float Z=.850650808352039932f;
     const float N=0.f;
@@ -37,7 +37,7 @@ void SphereRendering::createBaseIcosphere() {
 }
 
 
-void SphereRendering::uploadToOpenGL() {
+void Sphere::uploadToOpenGL() {
     indexCount = indexList.size();
 
     glGenVertexArrays(1, &vao);
@@ -59,7 +59,7 @@ void SphereRendering::uploadToOpenGL() {
 }
 
 
-void SphereRendering::draw(const glm::vec3 position, float radius, const glm::vec4 color, GLuint shaderID, const glm::mat4 viewProj) const {
+void Sphere::draw(const glm::vec3 position, float radius, const glm::vec4 color, GLuint shaderID, const glm::mat4 viewProj) const {
     glm::mat4 model = glm::translate(glm::mat4(1.0f), position);
     model = glm::scale(model, glm::vec3(radius));
     glm::mat4 MVP = viewProj * model;

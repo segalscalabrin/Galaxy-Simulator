@@ -3,7 +3,7 @@
 #include "include.hpp"
 
 
-class SphereRendering {
+class Sphere {
     private:
         GLuint vao, vbo, ebo;
         size_t indexCount;
@@ -12,10 +12,16 @@ class SphereRendering {
         std::vector<uint> indexList;
 
     public:
-        SphereRendering();
+        Sphere();
 
         void createBaseIcosphere();
         void uploadToOpenGL();
 
         void draw(const glm::vec3 position, float radius, const glm::vec4 color, GLuint shaderID, const glm::mat4 viewProj) const;
+};
+
+
+struct Shapes
+{
+    Sphere sphere;
 };
