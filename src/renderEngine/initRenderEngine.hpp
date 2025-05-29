@@ -2,9 +2,9 @@
 
 #include "include.hpp"
 
-#include "camera.hpp"
-#include "shaders.hpp"
-#include "shapes.hpp"
+#include "renderEngine/camera.hpp"
+#include "renderEngine/shaders.hpp"
+#include "renderEngine/shapes.hpp"
 
 GLFWwindow* initOpenGL();
 

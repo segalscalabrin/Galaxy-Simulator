@@ -11,7 +11,7 @@ void Scene::update(float deltaTime)
     // Pour plus tard : logique de mouvement des planètes
 }
 
-void Scene::draw(GLuint shaderID, const glm::mat4& viewProj) const
+void Scene::draw(GLuint shaderID, const glm::mat4 viewProj) const
 {
     const std::vector<glm::vec3> position = _planetGroup.getPosition();
     const std::vector<float>     radius   = _planetGroup.getRadius();

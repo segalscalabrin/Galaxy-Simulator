@@ -2,8 +2,8 @@
 
 #include "include.hpp"
 
-#include "scene.hpp"
-#include "planet.hpp"
+#include "computeEngine/scene.hpp"
+#include "computeEngine/planet.hpp"
 
 
 Scene initScene();

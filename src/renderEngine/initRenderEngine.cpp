@@ -47,6 +47,8 @@ GLFWwindow* initOpenGL() {
     glCullFace(GL_BACK);   // Ne pas dessiner les faces arrière (performances)
     glFrontFace(GL_CW);    // Définir le sens des triangles "face avant" (CW = clockwise)
 
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
     return window;
 }
 
@@ -56,7 +58,6 @@ GLuint initShader() {
 
 Camera initCamera() {
     Camera cam(45.0f, 4.f / 3.f, 0.1f, 100.0f);
-    cam.setPosition(glm::vec3(0, 0, 0), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0));
     return cam;
 }
 

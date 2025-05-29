@@ -15,5 +15,5 @@ class Scene {
         Scene();
 
         void update(float deltaTime);
-        void draw(GLuint shaderID, const glm::mat4& viewProj) const;
+        void draw(GLuint shaderID, const glm::mat4 viewProj) const;
 };
