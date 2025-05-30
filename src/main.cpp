@@ -22,6 +22,8 @@ int main()
         glUseProgram(shaderID);
 
         inputs->processInput(deltaTime);
+        
+        scene.update(deltaTime);
         scene.draw(shaderID, camera->getProjectionMatrix() * camera->getViewMatrix());
 
         glfwSwapBuffers(window);

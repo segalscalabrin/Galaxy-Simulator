@@ -2,13 +2,16 @@
 
 
 Scene::Scene() {
-    _planetGroup.addPlanet(glm::vec3(0.5, 0, -3), 0.3f, glm::vec4(0.2f, 0.6f, 1.0f, 1.0f));
-    _planetGroup.addPlanet(glm::vec3(-0.5, 0, -3), 0.5f, glm::vec4(0.2f, 0.6f, 1.0f, 1.0f));
+    _planetGroup.addPlanet(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), 5e10f, 1.5f, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));         // Jaune
+    _planetGroup.addPlanet(glm::vec3(5, 0, 5), glm::vec3(0.5, 0, -0.5), 1e9f, 0.5f, glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));     // Vert
+    _planetGroup.addPlanet(glm::vec3(-5, 0, -5), glm::vec3(-0.5, 0, 0.5), 1e9f, 0.5f, glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));   // Rouge 
+    _planetGroup.addPlanet(glm::vec3(7, 0, -5), glm::vec3(-0.5, 0, -0.5), 1e9f, 0.5f, glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));   // Bleu
+    _planetGroup.addPlanet(glm::vec3(-5, 0, 6), glm::vec3(-0.5, 0, -0.5), 1e9f, 0.5f, glm::vec4(1.0f, 0.0f, 1.0f, 1.0f));   // Magenta
 }
 
 void Scene::update(float deltaTime)
 {
-    // Pour plus tard : logique de mouvement des planètes
+    _planetGroup.compute(deltaTime);
 }
 
 void Scene::draw(GLuint shaderID, const glm::mat4 viewProj) const

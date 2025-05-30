@@ -2,7 +2,7 @@
 
 float fovGlob = 80.;
 
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
+void scrollCallback(GLFWwindow* window, double xoffset, double yoffset) {
     fovGlob -= (float)yoffset * 5;
     fovGlob = glm::clamp(fovGlob, 1.0f, 90.0f);
 }
@@ -12,7 +12,7 @@ InputController::InputController(GLFWwindow* window, Camera* camera) {
     _window = window;
     _camera = camera;
 
-    glfwSetScrollCallback(window, scroll_callback); 
+    glfwSetScrollCallback(window, scrollCallback); 
 }
 
 
@@ -32,7 +32,7 @@ void InputController::moveCameraPosition(float deltaTime) {
     if (glfwGetKey(_window, GLFW_KEY_SPACE) == GLFW_PRESS) {
         _camera->moveUp(_moveSpeed*deltaTime);
     }
-    if (glfwGetKey(_window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS) {
+    if (glfwGetKey(_window, GLFW_KEY_Q) == GLFW_PRESS) {
         _camera->moveUp(- _moveSpeed*deltaTime);
     }
 }
@@ -62,13 +62,23 @@ void InputController::moveCameraView(float deltaTime) {
     yoffset *= sensitivity;
 
     _camera->rotate(static_cast<float>(xoffset), static_cast<float>(yoffset));
+}
 
 
-    _camera->zoom(fovGlob);
+void InputController::changeSpeed(float deltaTime) {
+    if (glfwGetKey(_window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
+        _moveSpeed += 10*deltaTime;
+    }
+    if (glfwGetKey(_window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS) {
+        _moveSpeed -= 10*deltaTime;
+    }
 }
 
 
 void InputController::processInput(float deltaTime) {
     moveCameraPosition(deltaTime);
     moveCameraView(deltaTime);
+    changeSpeed(deltaTime);
+    _camera->zoom(fovGlob);
+
 }
