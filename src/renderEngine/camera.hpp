@@ -5,6 +5,8 @@
 
 class Camera {
     private:
+        std::shared_ptr<SimulationOptions> m_simOptions;
+
         glm::vec3 _position;
 
         glm::vec3 _cameraFront;
@@ -21,7 +23,7 @@ class Camera {
         void updateVectors(); 
 
     public:
-        Camera(float fov, float aspect, float nearPlane, float farPlane);
+        Camera(std::shared_ptr<SimulationOptions> simOptions);
 
         void setPosition(glm::vec3 position, glm::vec3 lookAt);
         void setProjection(float fov, float aspectRatio, float nearPlane, float farPlane);

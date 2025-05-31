@@ -4,11 +4,11 @@ float fovGlob = 80.;
 
 void scrollCallback(GLFWwindow* window, double xoffset, double yoffset) {
     fovGlob -= (float)yoffset * 5;
-    fovGlob = glm::clamp(fovGlob, 1.0f, 90.0f);
+    fovGlob = glm::clamp(fovGlob, 1.0f, 120.0f);
 }
 
 
-InputController::InputController(GLFWwindow* window, Camera* camera) {
+InputController::InputController(GLFWwindow* window, std::shared_ptr<Camera> camera) {
     _window = window;
     _camera = camera;
 
@@ -72,6 +72,7 @@ void InputController::changeSpeed(float deltaTime) {
     if (glfwGetKey(_window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS) {
         _moveSpeed -= 10*deltaTime;
     }
+    _moveSpeed = glm::clamp(_moveSpeed, 0.1f, 100.0f);
 }
 
 

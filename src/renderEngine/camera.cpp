@@ -1,10 +1,15 @@
 #include "camera.hpp"
 
 
-Camera::Camera(float fov, float aspectRatio, float nearPlane, float farPlane) {
-    _fov = fov; _aspectRatio = aspectRatio; _nearPlane = nearPlane; _farPlane = farPlane;
+Camera::Camera(std::shared_ptr<SimulationOptions> simOptions) {
+    m_simOptions = simOptions;
+    _fov = 80.0f; 
+    _aspectRatio = m_simOptions->screenWidth/m_simOptions->screenHeight; 
+    _nearPlane = 0.1f; 
+    _farPlane = 1000.f;
     _position = glm::vec3(0.0f, 0.0f, 3.0f);
-    _yaw = 0.0f; _pitch = 0.0f;
+    _yaw = 0.0f;
+    _pitch = 0.0f;
     _cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
     updateVectors();
 }
